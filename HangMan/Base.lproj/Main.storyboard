@@ -29,17 +29,11 @@
                                 <rect key="frame" x="138" y="356" width="109" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Intermediate"/>
-                                <connections>
-                                    <segue destination="jTi-iQ-b1O" kind="show" id="2pT-lc-7o6"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJl-63-YLe">
                                 <rect key="frame" x="145" y="394" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Advanced"/>
-                                <connections>
-                                    <segue destination="jTi-iQ-b1O" kind="show" id="kZ4-zu-ifd"/>
-                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="HangMan" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ImW-0r-jSp">
                                 <rect key="frame" x="62" y="147" width="250" height="69"/>
@@ -150,6 +144,7 @@
                         <viewLayoutGuide key="safeArea" id="bcZ-G5-mac"/>
                     </view>
                     <connections>
+                        <outlet property="image" destination="x1o-uw-p0s" id="BOH-dE-cRs"/>
                         <outlet property="userGuess" destination="17q-Oq-gQn" id="25e-k5-2wV"/>
                         <outlet property="word1" destination="qaC-OI-BgJ" id="HT7-hf-mEv"/>
                         <outlet property="word2" destination="Ex5-MV-vNe" id="rA8-3G-mIJ"/>
@@ -165,7 +160,4 @@
             <point key="canvasLocation" x="989.60000000000002" y="117.39130434782609"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="kZ4-zu-ifd"/>
-    </inferredMetricsTieBreakers>
 </document>
