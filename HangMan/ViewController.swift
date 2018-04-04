@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  HangMan
 //
-//  Created by Student on 2018-04-03.
+//  Created by Khushwant Singh on 2018-04-03.
 //  Copyright © 2018 Student. All rights reserved.
 //
 
