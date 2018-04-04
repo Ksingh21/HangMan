@@ -30,8 +30,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     
-    var imageArray = ["empty", "1", "2", "3", "4", "5" , "6", "7", "8"]
-    var words: [String] = ["airwave", "almonds","amazing"]
+    var imageArray = ["0", "1", "2", "3", "4", "5" , "6", "7", "8"]
+    var words: [String] = ["abcdefg", "hijklmn","opqrstu"]
 
     
     
@@ -54,43 +54,63 @@ class GameViewController: UIViewController {
         print(word5Ans)
         print(word6Ans)
         print(word7Ans)
-        var userGuessChar = Character(userGuess.text!)
+        var userGuessChar = String(userGuess.text!)
         print(userGuessChar)
     }
-    func setInitialPicture() {
-        image.image = UIImage(named: "empty")
-    }
+
     func checkAnswer() {
         if (word1Ans == userGuess.text) {
             word1.text = userGuess.text
         }
-        if (word2Ans == userGuess.text) {
+        else if (word2Ans == userGuess.text) {
             word2.text = userGuess.text
         }
-        if (word3Ans == userGuess.text) {
+        else if (word3Ans == userGuess.text) {
             word3.text = userGuess.text
         }
-        if (word4Ans == userGuess.text) {
+        else if (word4Ans == userGuess.text) {
             word4.text = userGuess.text
         }
-        if (word5Ans == userGuess.text) {
+        else if (word5Ans == userGuess.text) {
             word5.text = userGuess.text
         }
-        if (word6Ans == userGuess.text) {
+        else if (word6Ans == userGuess.text) {
             word6.text = userGuess.text
         }
-        if (word7Ans == userGuess.text) {
+        else if (word7Ans == userGuess.text) {
             word7.text = userGuess.text
         }
         else { wrongCount = wrongCount + 1}
         print(wrongCount)
     }
-    
+    func resetGame() {
+        wrongCount = 0
+        image.image = UIImage(named: String(wrongCount))
+        word1.text = "_"
+        word2.text = "_"
+        word3.text = "_"
+        word4.text = "_"
+        word5.text = "_"
+        word6.text = "_"
+        word7.text = "_"
+        userGuess.text = ""
+        defineWords()
+        
+    }
+    func endGame() {
+        if (wrongCount == 8) {
+            let alertController = UIAlertController(title: "Game Over", message:
+                "You have Failed! Better Luck next Time", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            resetGame()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         defineWords()
-        setInitialPicture()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -113,6 +133,8 @@ class GameViewController: UIViewController {
 
     @IBAction func tryButton(_ sender: UIButton) {
         checkAnswer()
+        image.image = UIImage(named: String(wrongCount))
+        endGame()
     }
     
 }
