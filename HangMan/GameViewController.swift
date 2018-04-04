@@ -17,6 +17,8 @@ class GameViewController: UIViewController {
     var word4Ans: String = ""
     var word5Ans: String = ""
     var wrongCount: Int = 0
+    var gameWin = false
+    
     @IBOutlet var word1: UITextView!
     @IBOutlet var word2: UITextView!
     @IBOutlet var word3: UITextView!
@@ -44,12 +46,6 @@ class GameViewController: UIViewController {
         word3Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 2)])
         word4Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 3)])
         word5Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 4)])
-        print(word1Ans)
-        print(word2Ans)
-        print(word3Ans)
-        print(word4Ans)
-        print(word5Ans)
-
     }
 
     func checkAnswer() {
@@ -83,9 +79,31 @@ class GameViewController: UIViewController {
         word5.text = "_"
         userGuess.text = ""
         defineWords()
+        gameWin = false
         
     }
     func endGame() {
+        
+        if (word1Ans == word1.text) {
+            if (word2Ans == word2.text) {
+                if (word3Ans == word3.text) {
+                    if (word4Ans == word4.text) {
+                        if (word5Ans == word5.text) {
+                            gameWin = true
+                        }
+                    }
+                }
+            }
+        }
+    
+        if (gameWin) {
+            let alertController = UIAlertController(title: "You Won", message:
+                "You have Won the Game.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Play Again", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            resetGame()
+        }
+        
         if (wrongCount == 8) {
             let alertController = UIAlertController(title: "Game Over", message:
                 "You have Failed! Better Luck next Time", preferredStyle: UIAlertControllerStyle.alert)

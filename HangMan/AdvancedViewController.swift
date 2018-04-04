@@ -20,6 +20,8 @@ class AdvancedViewController: UIViewController {
     var word8Ans: String = ""
     var word9Ans: String = ""
     var wrongCount: Int = 0
+    var gameWin = false
+    
     @IBOutlet var word1: UITextView!
     @IBOutlet var word2: UITextView!
     @IBOutlet var word3: UITextView!
@@ -56,15 +58,6 @@ class AdvancedViewController: UIViewController {
         word7Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 6)])
         word8Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 7)])
         word9Ans = String(fullWord[fullWord.index(fullWord.startIndex, offsetBy: 8)])
-        print(word1Ans)
-        print(word2Ans)
-        print(word3Ans)
-        print(word4Ans)
-        print(word5Ans)
-        print(word6Ans)
-        print(word7Ans)
-        print(word8Ans)
-        print(word9Ans)
     }
     
     func checkAnswer() {
@@ -114,9 +107,36 @@ class AdvancedViewController: UIViewController {
         word9.text = "_"
         userGuess.text = ""
         defineWords()
+        gameWin = false
         
     }
     func endGame() {
+        if (word1Ans == word1.text) {
+            if (word2Ans == word2.text) {
+                if (word3Ans == word3.text) {
+                    if (word4Ans == word4.text) {
+                        if (word5Ans == word5.text) {
+                            if (word6Ans == word6.text) {
+                                if (word7Ans == word7.text){
+                                    if (word8Ans == word8.text) {
+                                        if (word9Ans == word9.text) {
+                                            gameWin = true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (gameWin) {
+            let alertController = UIAlertController(title: "You Won", message:
+                "You have Won the Game.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Play Again", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            resetGame()
+        }
         if (wrongCount == 8) {
             let alertController = UIAlertController(title: "Game Over", message:
                 "You have Failed! Better Luck next Time", preferredStyle: UIAlertControllerStyle.alert)
