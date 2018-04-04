@@ -31,12 +31,12 @@ class GameViewController: UIViewController {
     
     
     var imageArray = ["0", "1", "2", "3", "4", "5" , "6", "7", "8"]
-    var words: [String] = ["abcdefg", "hijklmn","opqrstu"]
+    var words: [String] = ["abdomen", "abridge", "actions", "authors"]
 
     
     
     func defineWords() {
-        var randNum = arc4random_uniform(3)
+        let randNum = arc4random_uniform(4)
         
         let fullWord = words[Int(randNum)]
         
@@ -54,31 +54,32 @@ class GameViewController: UIViewController {
         print(word5Ans)
         print(word6Ans)
         print(word7Ans)
-        var userGuessChar = String(userGuess.text!)
-        print(userGuessChar)
+
     }
 
     func checkAnswer() {
-        if (word1Ans == userGuess.text) {
-            word1.text = userGuess.text
+        let userGuessChar = userGuess.text?.lowercased()
+        
+        if (word1Ans == userGuessChar) {
+            word1.text = userGuessChar
         }
-        else if (word2Ans == userGuess.text) {
-            word2.text = userGuess.text
+        else if (word2Ans == userGuessChar) {
+            word2.text = userGuessChar
         }
-        else if (word3Ans == userGuess.text) {
-            word3.text = userGuess.text
+        else if (word3Ans == userGuessChar) {
+            word3.text = userGuessChar
         }
-        else if (word4Ans == userGuess.text) {
-            word4.text = userGuess.text
+        else if (word4Ans == userGuessChar) {
+            word4.text = userGuessChar
         }
-        else if (word5Ans == userGuess.text) {
-            word5.text = userGuess.text
+        else if (word5Ans == userGuessChar) {
+            word5.text = userGuessChar
         }
-        else if (word6Ans == userGuess.text) {
-            word6.text = userGuess.text
+        else if (word6Ans == userGuessChar) {
+            word6.text = userGuessChar
         }
-        else if (word7Ans == userGuess.text) {
-            word7.text = userGuess.text
+        else if (word7Ans == userGuessChar) {
+            word7.text = userGuessChar
         }
         else { wrongCount = wrongCount + 1}
         print(wrongCount)
